@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%=postTitle%></title>
+  <!-- CSS only -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  
+</head>
+<body>
+  <%- include("partials/header"); %>
+  <div class="container">
+  <section id="body-margin">
+
+
+
+
+<h1 class="h1 font-bold text-gray-600 transition-colors duration-300 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"><%=postTitle%></h1><br>
+<img src="<%=postFeaturedImage%>" class="img-fluid featuredImageLarge" alt="<%=postTitle%> image">
+<br><br>
+<p><%=postContent%></p>
+
+
+
+</section>
+</div>
+<%- include("partials/footer"); %>
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,49 @@
+#body-margin {
+    margin: 5rem 0 5rem 0;
+}
+
+.btn-themeColor {
+    background-color: #ffc107 !important;
+    color: rgba(0, 0, 0, 0.55) !important;
+    font-weight: bold !important;
+}
+
+.btn-themeColor:hover {
+    background-color: #ffca2c !important;
+    color: rgba(0, 0, 0, 0.55) !important;
+    border-color: #ffca2c !important;
+}
+
+/* home.ejs styles */
+.card {
+    margin: 1rem 0 1rem 0 ;
+}
+
+/* post.ejs styles */
+
+.featuredImageLarge {
+    width: 75%;
+}
+
+pre {
+    background-color: white;
+
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+    #body-margin {
+        margin: 2rem 0 2rem 0;
+    }
+    
+    /* home.ejs styles */
+    .card {
+        margin: 1rem 1rem 1rem 1rem;
+    }
+
+
+
+}
+

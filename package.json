@@ -1,0 +1,18 @@
+{
+  "name": "Blogify",
+  "version": "1.0.0",
+  "description": "Blogify | An Open-source Node.js Blogging Platform",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1" 
+  },
+  "author": "Tushar Khatri",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "ejs": "^2.7.4",
+    "express": "^4.18.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.5.3"
+  }
+}
