@@ -1,5 +1,5 @@
-# Blogify
-Blogify | An Open-source Node.js blogging Website for everyone
+# Blogify [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) [![](https://img.shields.io/badge/Node.js-v14.17.5-informational)](https://nodejs.org/gl/blog/release/v14.17.5/)
+Blogify | An Open-source Node.js blogging Website for everyone 
 
 ## Description
 
@@ -40,7 +40,7 @@ You'll need the following installed on your local machine to begin:
 
 We are open to contributions and encourage students and professionals to contribute to this project, contributing tp this project will give you a chance to learn and grow, also will help this project reach heights! This is the real beauty of Open-source..
 
-If you'd like to contribute, take a look at the [Contribution guidelines](docs/CONTRIBUTING.md) to get started. I ask that participants adhere to the [code of conduct](docs/CODEOFCONDUCT.md) to keep this a productive learning environment for everyone (myself included).
+If you'd like to contribute, take a look at the [Contribution guidelines](docs/CONTRIBUTING.md) to get started. I ask that participants adhere to the [code of conduct](docs/CODE_OF_CONDUCT.md) to keep this a productive learning environment for everyone (myself included).
 
 ## Authors & Contributors
 * [Tushar Khatri](https://github.com/tusharkhatriofficial/) `(Maintainer)`
