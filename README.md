@@ -44,5 +44,5 @@ If you'd like to contribute, take a look at the [Contribution guidelines](docs/C
 
 ## Authors & Contributors
 * [Tushar Khatri](https://github.com/tusharkhatriofficial/) `(Maintainer)`
-
+* [Ujjawal Modi](https://github.com/Ujjawal3/)`(contributor)`
 
