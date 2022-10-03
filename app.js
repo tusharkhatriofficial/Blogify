@@ -5,7 +5,8 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
-
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
 
@@ -42,6 +43,15 @@ app.get("/", (req, res) => {
     }
   });
 });
+
+
+app.get("/register",(req,res)=>{
+  res.render("register")
+})
+
+app.get("/login",(req,res)=>{
+  res.render("login")
+})
 
 app.get("/about", (req, res) => {
   res.render("about", {aboutContent: aboutContent});
