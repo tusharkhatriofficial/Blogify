@@ -73,7 +73,20 @@ app.get("/contact", (req, res) => {
 });
 
 app.get("/compose", (req, res) => {
-  res.render("compose");
+  const firebase_config = {
+    apiKey: process.env.apikey,
+    authDomain:
+      process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket:
+      process.env.storageBucket,
+    messagingSenderId:
+      process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId:
+      process.env.measurementId,
+  };
+  res.render("compose", {config : {...firebase_config}});
 });
 
 app.post("/compose", rateLimiters(25), (req, res) => {
