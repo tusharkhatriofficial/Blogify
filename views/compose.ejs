@@ -1,49 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compose</title>
-  <!-- CSS only -->
-  <link rel="stylesheet" href="/css/styles.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  
-</head>
-<body>
-  <%- include("partials/header"); %>
-  <div class="container">
-  <section id="body-margin">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Compose</title>
+		<!-- CSS only -->
+		<link
+			rel="stylesheet"
+			href="/css/styles.css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body>
+		<%- include("partials/header"); %>
+		<div class="container">
+			<section id="body-margin">
+				<!-- <form action="/compose" method="post"> -->
+				<form>
+					<div class="form-group">
+						<label
+							for="postTitle"
+							class="text-xl text-gray-600 transition-colors duration-300 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
+							>Title</label
+						>
+						<input
+							class="form-control"
+							type="text"
+							name="postTitle"
+							id="title"
+							required
+						/>
+						<br />
+						<label
+							for="postFeaturedImage"
+							class="text-xl text-gray-600 transition-colors duration-300 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
+							>Image</label
+						>
+						<input
+							class="form-control"
+							type="file"
+							name="postFeaturedImage"
+							id="photo"
+							required
+						/>
+						<br />
+						<label
+							for="postBody"
+							class="text-xl text-gray-600 transition-colors duration-300 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
+							>Post</label
+						>
+						<textarea
+							class="form-control"
+							name="postBody"
+							rows="5"
+							cols="30"
+							id="content"
+							required
+						></textarea>
+					</div>
+					<br />
+					<button
+						class="btn btn-themeColor"
+						name="button"
+						id="publish"
+					>
+						Publish
+					</button>
+				</form>
+			</section>
+		</div>
+		<%- include("partials/footer"); %>
+		<!-- Bootstrap JavaScript Bundle -->
+		<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 
+		<script>
+			// Configuring Firebase
+			const firebaseConfig = {
+				apiKey: '<%= config.apiKey %>',
+				authDomain: '<%= config.authDomain %>',
+				projectId: '<%= config.projectId %>',
+				storageBucket:
+					'<%= config.storageBucket %>',
+				messagingSenderId:
+					'<%= config.messagingSenderId %>',
+				appId: '<%= config.appId %>',
+				measurementId:
+					'<%= config.measurementId %>',
+			};
 
+			firebase.initializeApp(firebaseConfig);
 
-<form action="/compose" method="post">
-  <div class="form-group">
-  <label for="postTitle" class="text-xl text-gray-600 transition-colors duration-300 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Title</label>
-  <input class="form-control" type="text" name="postTitle" required>
-  <br>
-  <label for="postFeaturedImage" class="text-xl text-gray-600 transition-colors duration-300 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Image</label>
-  <input class="form-control" type="text" name="postFeaturedImage" required>
-  <br>
-  <label for="postBody" class="text-xl text-gray-600 transition-colors duration-300 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">Post</label>
-  <textarea class="form-control" name="postBody" rows="5" cols="30" required></textarea>
-  </div>
-  <br>
-  <button class="btn btn-themeColor" name="button" type="submit">Publish</button>
-</form>
+			var selectedFile;
+			var imgURL;
 
+			document
+				.getElementById('publish')
+				.addEventListener('click', (e) => {
+					e.preventDefault();
+					var title = document
+						.getElementById('title')
+						.value.trim();
+					var content = document
+						.getElementById('content')
+						.value.trim();
+					var img =
+						document.getElementById('photo').files
+							.length;
+					console.log(title, content, img);
+					if (
+						title == '' ||
+						content == '' ||
+						img == 0
+					) {
+						alert('Fill all Fields');
+					} else {
+						getfile();
+					}
+				});
+			function getfile() {
+				var pic =
+					document.getElementById('photo');
 
-</section>
-</div>
-<%- include("partials/footer"); %>
-<!-- Bootstrap JavaScript Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-</body>
+				// selected file is that file which user chosen by html form
+				selectedFile = pic.files[0];
+
+				myfunction(); // call below written function
+				// console.log(selectedFile);
+			}
+
+			function uuidv4() {
+				return (
+					[1e7] +
+					-1e3 +
+					-4e3 +
+					-8e3 +
+					-1e11
+				).replace(/[018]/g, (c) =>
+					(
+						c ^
+						(crypto.getRandomValues(
+							new Uint8Array(1)
+						)[0] &
+							(15 >> (c / 4)))
+					).toString(16)
+				);
+			}
+
+			function myfunction() {
+				// select unique name for everytime when image uploaded
+				// Date.now() is function that give current timestamp
+				// var name = '123' + Date.now();
+				var name = `postImage-${uuidv4()}-{Date.now()}`;
+
+				// make ref to your firebase storage and select images folder
+				var storageRef = firebase
+					.storage()
+					.ref('/images/' + name);
+
+				// put file to firebase
+				var uploadTask =
+					storageRef.put(selectedFile);
+
+				// all working for progress bar that in html
+				// to indicate image uploading... report
+				uploadTask.on(
+					'state_changed',
+					function (snapshot) {
+						// var progress =
+						// 	(snapshot.bytesTransferred /
+						// 		snapshot.totalBytes) *
+						// 	100;
+						// var uploader =
+						// 	document.getElementById('uploader');
+						// uploader.value = progress;
+						switch (snapshot.state) {
+							case firebase.storage.TaskState
+								.PAUSED:
+								console.log('Upload is paused');
+								break;
+							case firebase.storage.TaskState
+								.RUNNING:
+								console.log('Upload is running');
+								break;
+						}
+					},
+					function (error) {
+						console.log(error);
+					},
+					function () {
+						// get the uploaded image url back
+						uploadTask.snapshot.ref
+							.getDownloadURL()
+							.then(function (downloadURL) {
+								// You get your url from here
+								console.log(
+									'File available at',
+									downloadURL
+								);
+								imgURL = downloadURL;
+								// print the image url
+								var title =
+									document.getElementById(
+										'title'
+									).value;
+								var content =
+									document.getElementById(
+										'content'
+									).value;
+								var postFeaturedImage = imgURL;
+								// launchMyForm()
+								// function launchMyForm() {
+								var myForm =
+									document.createElement('FORM');
+								myForm.setAttribute(
+									'id',
+									'TestForm'
+								);
+								document.body.appendChild(myForm);
+
+								// this will create a new FORM which is mapped to the Java Object of myForm, with an id of TestForm. Equivalent to: <form id="TestForm"></form>
+
+								var titleInput =
+									document.createElement('INPUT');
+								titleInput.setAttribute(
+									'id',
+									'title-input'
+								);
+								titleInput.setAttribute(
+									'type',
+									'text'
+								);
+								titleInput.setAttribute(
+									'value',
+									title
+								);
+								titleInput.setAttribute(
+									'name',
+									'postTitle'
+								);
+								document
+									.getElementById('TestForm')
+									.appendChild(titleInput);
+
+								var contentInput =
+									document.createElement('INPUT');
+								contentInput.setAttribute(
+									'id',
+									'content-input'
+								);
+								contentInput.setAttribute(
+									'type',
+									'text'
+								);
+								contentInput.setAttribute(
+									'value',
+									content
+								);
+								contentInput.setAttribute(
+									'name',
+									'postBody'
+								);
+								document
+									.getElementById('TestForm')
+									.appendChild(contentInput);
+
+								var imageInput =
+									document.createElement('INPUT');
+								imageInput.setAttribute(
+									'id',
+									'img-input'
+								);
+								imageInput.setAttribute(
+									'type',
+									'text'
+								);
+								imageInput.setAttribute(
+									'value',
+									postFeaturedImage
+								);
+								imageInput.setAttribute(
+									'name',
+									'postFeaturedImage'
+								);
+								document
+									.getElementById('TestForm')
+									.appendChild(imageInput);
+
+								// To submit the form:
+								myForm.method = 'POST';
+								myForm.action = '/compose'; // or "response.php"
+								myForm.submit();
+
+								// This will create an INPUT equivalent to: <INPUT id="MyInput" type="text" value="Heider" /> and then assign it to be inside the TestForm tags.
+								// }
+							});
+					}
+				);
+			}
+		</script>
+	</body>
 </html>
-
-
-
-
-
-
