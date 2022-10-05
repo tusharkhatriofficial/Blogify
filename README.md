@@ -1,6 +1,6 @@
 # Blogify [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) [![](https://img.shields.io/badge/Node.js-v14.17.5-informational)](https://nodejs.org/gl/blog/release/v14.17.5/)
 
-Blogify | An Open-source Node.js blogging Website for everyone
+Blogify | An Open-source Node.js blogging Website for everyone.
 
 ## Description
 
@@ -9,6 +9,9 @@ The idea is to help these people by building an Open-source Blogging website/Web
 help them in creating a seamless reading experience for their users.
 
 > Live web app coming soon!
+
+**This project is an effort of many. Please view the [Contributors List](https://github.com/tusharkhatriofficial/Blogify#authors--contributors) for more insights.**
+
 
 ## Tech Stack
 
