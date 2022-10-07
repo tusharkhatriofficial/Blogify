@@ -12,7 +12,6 @@ help them in creating a seamless reading experience for their users.
 
 **This project is an effort of many. Please view the [Contributors List](https://github.com/tusharkhatriofficial/Blogify#authors--contributors) for more insights.**
 
-
 ## Tech Stack
 
 - Node.js
@@ -44,6 +43,8 @@ You'll need the following installed on your local machine to begin:
 - Click Here ![img1](/docs/doc1.PNG)
 - Register app by giving it any name
 - copy this content into your .env file (replace ":" with "=", and remove all the ",") ![img1](/docs/doc2.PNG)
+- Click Here ![img1](https://user-images.githubusercontent.com/77038993/194508407-3bae2403-f041-417a-a695-df901c2033c0.PNG)
+- Make Sure it is true, initially it will be false ![img1](https://user-images.githubusercontent.com/77038993/194508684-50c68fe9-f465-420a-a50c-519c48686fa0.PNG)
 - In a 3rd command line shell, run `node app.js`. It will tell you what port to visit the app on; open a browser and copy/paste the provided `localhost` address.
 
 ## Contributing
