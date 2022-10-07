@@ -41,6 +41,8 @@ You'll need the following installed on your local machine to begin:
 - Click Here ![img1](/docs/doc1.PNG)
 - Register app by giving it any name
 - copy this content into your .env file (replace ":" with "=", and remove all the ",") ![img1](/docs/doc2.PNG)
+- Then Click here ![img1](/docs/res1.PNG)
+- Make sure it is true ![img1](/docs/res2.PNG)
 - In a 3rd command line shell, run `node app.js`. It will tell you what port to visit the app on; open a browser and copy/paste the provided `localhost` address.
 
 ## Contributing
