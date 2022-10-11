@@ -1,0 +1,81 @@
+img {
+    width: 50%;
+  }
+
+  body {
+    background-color: #eaeff1;
+    font-family: "Raleway", sans-serif;
+  }
+  
+  img {
+    width: 100%;
+  }
+
+  img {
+    border-radius: 12px;
+    height: 214px;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  #container {
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 20vh;
+  }
+
+  .card {
+    background-color: white;
+    border: 1px solid #bacdd8;
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .tag {
+    padding: 4px 8px;
+    border: 1px solid #e5eaed;
+  
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #788697;
+  }
+  
+  
+  .name {
+    font-size: 24px;
+    font-weight: 600;
+  
+    margin-top: 16px;
+  }
+  
+  
+  p {
+    font-size: 14px;
+    color: #7f8c9b;
+    line-height: 150%;
+  }
+  
+  button {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: #0077ff;
+    background-color: #e0efff;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .card__details {
+    padding: 16px 8px 8px 8px;
+  }
+
+  button:focus,
+ button:hover {
+  background-color: #0077ff;
+  color: #e0efff;
+}
