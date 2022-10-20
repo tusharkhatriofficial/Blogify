@@ -6,10 +6,14 @@ const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+//imports for markdown
+const createDomPurify = require("dompurify");
+const marked = require("marked");
+const { JSDOM } = require("jsdom");
+const dompurify = createDomPurify(new JSDOM().window);
 //rate limiting
 const rateLimit = require("express-rate-limit");
 dotenv.config();
-
 const app = express();
 
 app.set("view engine", "ejs");
@@ -65,14 +69,14 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", { aboutContent: aboutContent });
+  res.render("about", { aboutContent: "No content here yet" });
 });
 
 app.get("/contact", (req, res) => {
-  res.render("contact", { contactContent: contactContent });
+  res.render("contact", { contactContent: "No content here yet " });
 });
 
-app.get("/compose", (req, res) => {
+app.get("/compose", (req, res) => { 
   const firebase_config = {
     apiKey: process.env.apikey,
     authDomain:
@@ -105,12 +109,13 @@ app.post("/compose", rateLimiters(25), (req, res) => {
 });
 
 app.get("/posts/:optional", (req, res) => {
+  
   posts.forEach((element) => {
     var optionalRoute = _.lowerCase(req.params.optional);
     if (_.lowerCase(element.title) === optionalRoute) {
       res.render("post", {
         postTitle: element.title,
-        postContent: element.content,
+        postContent: dompurify.sanitize(marked.parse(element.content)),
         postFeaturedImage: element.postFeaturedImage,
       });
     } else {
